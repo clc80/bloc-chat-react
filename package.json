@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.0.4",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
@@ -12,5 +13,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clc80/bloc-chat-react.git"
+  },
+  "author": "Claudia Maciel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clc80/bloc-chat-react/issues"
+  },
+  "homepage": "https://github.com/clc80/bloc-chat-react#readme"
 }
