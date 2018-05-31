@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import RoomList from './components/RoomList';
 import './App.css';
 
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
   // Initialize Firebase
   var config = {
@@ -24,7 +24,7 @@ class App extends Component {
           <h1> Chat </h1>
         </header>
         <main>
-
+          <RoomList firebase={firebase} />
         </main>
       </div>
 
