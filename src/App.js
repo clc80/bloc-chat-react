@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
 import './App.css';
 
 
@@ -25,6 +26,7 @@ class App extends Component {
         </header>
         <main>
           <RoomList firebase={firebase} />
+          <MessageList firebase={firebase} />
         </main>
       </div>
 
