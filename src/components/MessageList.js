@@ -4,7 +4,9 @@ class MessageList extends Component {
   render() {
     return (
       <div className = "messageList">
-        <h1>{this.props.activeRoom}</h1>
+        <h1>List Messages</h1>
+        {console.log(this.props.activeRoom)}
+        <li> {this.props.activeRoom} </li>
       </div>
     )
   }
