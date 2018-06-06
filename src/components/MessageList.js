@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class MessageList extends Component {
   render() {
     return (
-      <div>
-        <h1>List Messages</h1>
+      <div className = "messageList">
+        <h1>{this.props.activeRoom}</h1>
       </div>
     )
   }

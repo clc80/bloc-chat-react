@@ -18,6 +18,18 @@ import './App.css';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeRoom: ''
+    };
+    this.selectActiveRoom = this.selectActiveRoom.bind(this);
+  }
+
+  selectActiveRoom(room) {
+    this.setState({ activeRoom: room })
+  }
+
   render () {
     return (
       <div className='App'>
@@ -25,8 +37,14 @@ class App extends Component {
           <h1> Chat </h1>
         </header>
         <main>
-          <RoomList firebase={firebase} />
-          <MessageList firebase={firebase} />
+          <RoomList
+            firebase={firebase}
+            activeRoom = {this.state.activeRoom}
+          />
+          <MessageList
+            firebase={firebase}
+            activeRoom = {this.activeRoom}
+          />
         </main>
       </div>
 
