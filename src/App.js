@@ -23,7 +23,7 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoom: '',
-      user: null
+      user: ''
     };
     this.selectActiveRoom = this.selectActiveRoom.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -56,6 +56,7 @@ class App extends Component {
             firebase={firebase}
             activeRoom = {this.state.activeRoom}
           />
+          <h2>Current User: {this.state.user ? this.state.user.displayName : 'Guest'}</h2>
 
         </main>
       </div>

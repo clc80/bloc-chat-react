@@ -22,7 +22,7 @@ class MessageList extends Component {
       <div className = "messageList">
         <h1>List Messages</h1>
         {console.log(this.props.activeRoom)}
-        <li> {this.props.activeRoom.name} </li>
+        <div> {this.props.activeRoom.name} </div>
 
         <div>{this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
           <li key={index}>{message.content}</li>
