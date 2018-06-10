@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import './App.css';
 
 
@@ -21,13 +22,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeRoom: ''
+      activeRoom: '',
+      user: null
     };
     this.selectActiveRoom = this.selectActiveRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   selectActiveRoom(room) {
     this.setState({ activeRoom: room })
+  }
+  setUser(user) {
+    this.setState({ user: user });
   }
 
   render () {
@@ -37,6 +43,10 @@ class App extends Component {
           <h1> Chat </h1>
         </header>
         <main>
+          <User
+            firebase={firebase}
+            setUser={this.setUser}
+          />
           <RoomList
             firebase={firebase}
             activeRoom = {this.state.activeRoom}
@@ -46,6 +56,7 @@ class App extends Component {
             firebase={firebase}
             activeRoom = {this.state.activeRoom}
           />
+
         </main>
       </div>
 
