@@ -31,18 +31,9 @@ class MessageList extends Component {
         sentAt: this.getTime(),
         username: this.props.userName.displayName
     }
-    console.log(msg);
-    this.messagesRef.push({msg});
+    this.messagesRef.push(msg);
     this.setState({newMessage: ''})
   }
-  /*createRoom(e) {
-    e.preventDefault();
-    if(!this.state.newRoomName) {return}
-    this.roomsRef.push ({
-      name: this.state.newRoomName
-    });
-    this.setState({ newRoomName: '' })
-  }*/
 
   doubleDigit(number) {
     return (number < 10) ? "0" + number : number
