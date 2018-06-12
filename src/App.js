@@ -55,6 +55,7 @@ class App extends Component {
           <MessageList
             firebase={firebase}
             activeRoom = {this.state.activeRoom}
+            userName={this.state.user}
           />
           <h2>Current User: {this.state.user ? this.state.user.displayName : 'Guest'}</h2>
 

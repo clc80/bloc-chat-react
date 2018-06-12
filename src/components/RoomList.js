@@ -27,11 +27,12 @@ class RoomList extends Component {
     });
     this.setState({ newRoomName: '' })
   }
+
   handleChange(e) {
     this.setState({newRoomName: e.target.value});
   }
+
   selectRoom(room) {
-    console.log(room.name)
     this.props.selectActiveRoom(room);
   }
 

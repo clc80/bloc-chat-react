@@ -4,7 +4,8 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      newMessage: ''
     };
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
@@ -14,22 +15,77 @@ class MessageList extends Component {
       const message = snapshot.val();
       message.key = snapshot.key;
       this.setState( {messages: this.state.messages.concat(message)});
-      console.log(message);
     });
   }
+
+  handleMessageChange(e) {
+    this.setState({newMessage: e.target.value})
+  }
+
+  handleMessageClick(e) {
+    e.preventDefault();
+    if(!this.state.newMessage) {return}
+    const msg = {
+        roomId: this.props.activeRoom.key,
+        content: this.state.newMessage,
+        sentAt: this.getTime(),
+        username: this.props.userName.displayName
+    }
+    console.log(msg);
+    this.messagesRef.push({msg});
+    this.setState({newMessage: ''})
+  }
+  /*createRoom(e) {
+    e.preventDefault();
+    if(!this.state.newRoomName) {return}
+    this.roomsRef.push ({
+      name: this.state.newRoomName
+    });
+    this.setState({ newRoomName: '' })
+  }*/
+
+  doubleDigit(number) {
+    return (number < 10) ? "0" + number : number
+  }
+
+  getTime() {
+    const date = new Date();
+    let hours = date.getHours();
+    let ampm = hours >= 12 ? "PM" : "AM"
+    hours = hours > 12 ? hours - 12 : hours;
+    return (hours + ":" + this.doubleDigit(date.getMinutes()) + ampm);
+  }
+
   render() {
-    return (
+
+    if(this.props.activeRoom) {
+      return (
       <div className = "messageList">
         <h1>List Messages</h1>
-        {console.log(this.props.activeRoom)}
         <div> {this.props.activeRoom.name} </div>
 
         <div>{this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
           <li key={index}>{message.content}</li>
         )}</div>
 
+        <div className='newMessage'>
+          {/*Form for creating a Message*/}
+          <form onSubmit={(e) => this.handleMessageClick(e)}>
+            <input
+              type="text"
+              placeholder="New Chat Room Message"
+              value={this.state.newMessage}
+              onChange={(e) => this.handleMessageChange(e)}
+            />
+            <input type="submit"/>
+          </form>
+        </div>
+
       </div>
     )
+  } else {
+    return <div></div>
+  }
   }
 }
 
