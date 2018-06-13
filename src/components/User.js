@@ -26,7 +26,7 @@ class User extends Component {
     });
   }
   notSignedIn(isSignedIn) {
-    if (!isSignedIn)
+    if (!this.props.user)
     return <h1> Please sign in to leave a comment! </h1>
   }
 

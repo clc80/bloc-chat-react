@@ -48,7 +48,9 @@ class MessageList extends Component {
   }
 
   render() {
-
+    if(!this.props.userName) {
+      return <h1> Please sign in to leave a comment! </h1>
+    } else {
     if(this.props.activeRoom) {
       return (
       <div className = "messageList">
@@ -78,6 +80,7 @@ class MessageList extends Component {
   } else {
     return <div></div>
   }
+}
   }
 }
 
