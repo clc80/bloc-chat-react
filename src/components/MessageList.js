@@ -49,7 +49,7 @@ class MessageList extends Component {
 
   render() {
     if(!this.props.userName) {
-      return <h1> Please sign in to leave a comment! </h1>
+      return <h2> Please sign in to view comments! </h2>
     } else {
     if(this.props.activeRoom) {
       return (
