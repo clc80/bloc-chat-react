@@ -25,14 +25,14 @@ class MessageList extends Component {
   handleMessageClick(e) {
     e.preventDefault();
     if(!this.state.newMessage) {return}
-    const msg = {
-        roomId: this.props.activeRoom.key,
-        content: this.state.newMessage,
-        sentAt: this.getTime(),
-        username: this.props.userName.displayName
-    }
-    this.messagesRef.push(msg);
-    this.setState({newMessage: ''})
+      const msg = {
+          roomId: this.props.activeRoom.key,
+          content: this.state.newMessage,
+          sentAt: this.getTime(),
+          username: this.props.userName.displayName
+      }
+      this.messagesRef.push(msg);
+      this.setState({newMessage: ''})
   }
 
   doubleDigit(number) {
@@ -56,8 +56,9 @@ class MessageList extends Component {
         <div> {this.props.activeRoom.name} </div>
 
         <div>{this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
-          <li key={index}>{message.content}</li>
+          <li key={index}>{message.content} - {message.username}</li>
         )}</div>
+
 
         <div className='newMessage'>
           {/*Form for creating a Message*/}
